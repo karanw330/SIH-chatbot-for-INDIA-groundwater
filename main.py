@@ -1,7 +1,5 @@
-import os
 import re
 from dotenv import load_dotenv
-from langchain_community.document_loaders import PDFPlumberLoader
 from langchain_huggingface import HuggingFaceEmbeddings, ChatHuggingFace, HuggingFacePipeline
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_google_genai import ChatGoogleGenerativeAI
@@ -11,12 +9,34 @@ from langchain_chroma import Chroma
 #import torch
 #import pandas as pd
 from docx import Document as Docx
+import uvicorn
 
 load_dotenv()
 
 from langchain.schema import Document
 from sqlalchemy import create_engine,text
 import requests
+
+
+from typing import Union
+
+from fastapi import FastAPI, Request
+from fastapi.middleware.cors import CORSMiddleware
+from pydantic import BaseModel
+
+app = FastAPI()
+
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # change to your frontend URL in production
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+class ChatRequest(BaseModel):
+    prompt: str
 
 #-------------------------------------- Future api use if required ---------------------------------------------#
 
@@ -141,8 +161,9 @@ query_chain = create_sql_query_chain(llm, db)
 
 
 retriever = vector_store.as_retriever(search_type="similarity", search_kwargs={"k": 2})
-while True:
-    prompt = input("Enter the query: ")
+
+def qna(prompt):
+    # prompt = input("Enter the query: ")
     result = retriever.invoke(prompt)
     # docs = retriever.get_relevant_documents(prompt)
     # user_q = "what is a rainy day"
@@ -168,7 +189,7 @@ while True:
     from langchain_core.messages import HumanMessage
 
     result = llm.invoke(f"Answer the query: {prompt} using ONLY the given context: {context}. You have two contexts, you can either choose one of them or both two answer the question. For any kind of numerical data refer only the sql context if given.")
-    print(result.content)
+    return result.content
     #
     #
     #
@@ -186,3 +207,13 @@ while True:
     #
     # output = llm.invoke(final_prompt)
     # print("Answer is: ",output)
+
+@app.post("/chat")
+async def chat_endpoint(request: ChatRequest):
+    user_message = request.prompt
+    answer = qna(user_message)
+    return {"answer": answer}
+
+
+if __name__ == "__main__":
+    uvicorn.run("main:app", host="127.0.0.1", port=8000, reload=True)

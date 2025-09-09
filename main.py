@@ -5,7 +5,7 @@ from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_chroma import Chroma
 #from pandas import read_csv
-#from transformers import pipeline, AutoTokenizer, AutoModelForCausalLM, BitsAndBytesConfig, AutoModelForSeq2SeqLM, TapexTokenizer
+#from transformers import pipeline, AutoTokenizer, AutoModelForCausalLM, BitsAndBytesConfig
 #import torch
 #import pandas as pd
 from docx import Document as Docx

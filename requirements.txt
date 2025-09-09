@@ -1,0 +1,15 @@
+fastapi==0.111.2
+uvicorn[standard]==0.23.2
+python-dotenv==1.0.0
+sqlalchemy==2.0.28
+requests==2.32.2
+pydantic==2.6.0
+python-docx==0.8.12
+langchain==0.1.0  # Replace with the latest LangChain version
+chromadb==0.3.39  # Chroma vector store
+langchain-huggingface==0.0.29
+langchain-google-genai==0.0.11
+transformers==4.41.0
+torch==2.2.0
+
+# to install, run      pip install -r requirements.txt

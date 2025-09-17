@@ -25,15 +25,18 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 
 app = FastAPI()
-react_port = 5172
+react_port = 5173
 
-origins = [
-    f"http://localhost:{react_port}",
-]
+# origins = [
+#     f"http://localhost:{react_port}",
+#     "http://127.0.0.1:5000",
+#     "http://127.0.0.1:5173"
+# ]
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
+    # allow_origins=["*"],
+    allow_origins=["http://localhost:5173"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -167,11 +170,10 @@ query_chain = create_sql_query_chain(llm, db)
 retriever = vector_store.as_retriever(search_type="similarity", search_kwargs={"k": 2})
 
 def qna(prompt):
-    # prompt = input("Enter the query: ")
     result = retriever.invoke(prompt)
-    # docs = retriever.get_relevant_documents(prompt)
-    # user_q = "what is a rainy day"
-    context=""
+    context="theory: "
+    th_context = "\n".join([doc.page_content for doc in result])
+    context = context + th_context + "\n\n" + "SQL contex: "
     try:
         sql = query_chain.invoke({"question": prompt})
         # If model adds `SQLQuery:` in front, clean it
@@ -183,34 +185,14 @@ def qna(prompt):
             rows = result.fetchall()
             for row in rows:
                 context += str(row) + "\n"
-            context += "\n thheory result: "
 
     except Exception as e:
         pass
-    th_context = "\n".join([doc.page_content for doc in result])
-    context = context + th_context
-    # print(context)
+    print(context)
     from langchain_core.messages import HumanMessage
 
-    result = llm.invoke(f"Answer the query: {prompt} using ONLY the given context: {context}. You have two contexts, you can either choose one of them or both two answer the question. For any kind of numerical data refer only the sql context if given.")
+    result = llm.invoke(f"Answer the query: {prompt} using ONLY the given context: {context}. For any kind of numerical data emphasise on the sql context if SQL result exists, else refer whatever is provided and try to elaborate theory. Don't mention anything about getting a context, refrain from writing phrases like 'the given context provides'")
     return result.content
-    #
-    #
-    #
-    #
-    # final_prompt = f"""
-    # You are a helpful assistant.
-    # Answer the question based ONLY on the context below. Do not add extra explanations, do not repeat yourself. be as concise as possible. Do not round off any numerical value.
-    #
-    # Context: {context}
-    #
-    # Question: {prompt}
-    #
-    # Answer:
-    # """
-    #
-    # output = llm.invoke(final_prompt)
-    # print("Answer is: ",output)
 
 @app.post("/chat")
 async def chat_endpoint(request: ChatRequest):
@@ -220,4 +202,4 @@ async def chat_endpoint(request: ChatRequest):
 
 
 if __name__ == "__main__":
-    uvicorn.run("main:app", host="127.0.0.1", port=8000, reload=True)
+    uvicorn.run("main:app", host="localhost", port=8000, reload=True)

@@ -3,7 +3,7 @@ import { Bot, User, Menu, X, Sun, Moon } from 'lucide-react';
 import "./App.css"
 
 const generateId = () => Math.random().toString(36).substring(2, 9);
-
+console.log(window.location.origin);
 export default function App() {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');
@@ -34,13 +34,13 @@ export default function App() {
     // --- Start of API Call Integration ---
     try {
       // Make an API call to your FastAPI backend
-      const response = await fetch('http://127.0.0.1:8000/chat', {
+      const response = await fetch('/api/chat', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         // Send the user's message text in the request body
-        body: JSON.stringify({ message: input }),
+        body: JSON.stringify({ prompt: input }),
       });
 
       if (!response.ok) {
@@ -48,11 +48,11 @@ export default function App() {
       }
 
       const data = await response.json();
-      
+      console.log(data);
       // Create and add the bot's response to the chat
       const botResponse = {
         id: generateId(),
-        text: data.response, // Assuming your FastAPI response has a 'response' key
+        text: data.answer, // Assuming your FastAPI response has a 'response' key
         sender: 'bot',
       };
       

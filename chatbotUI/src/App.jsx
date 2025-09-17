@@ -75,6 +75,19 @@ export default function App() {
     <div className={`message-bubble message-${sender}`}>
       <span className="message-icon">
         {sender === 'bot' ? <Bot size={20} /> : <User size={20} />}
+  {/*       {sender === 'bot' ? (*/}
+  {/*  <img*/}
+  {/*    src="water_drop.png"*/}
+  {/*    alt="Bot"*/}
+  {/*    className="h-5 w-5 object-contain"*/}
+  {/*  />*/}
+  {/*) : (*/}
+  {/*  <img*/}
+  {/*    src="water_drop.png"*/}
+  {/*    alt="User"*/}
+  {/*    className="h-5 w-5 object-contain"*/}
+  {/*  />*/}
+  {/*)}*/}
       </span>
       <p className="message-text">{text}</p>
     </div>

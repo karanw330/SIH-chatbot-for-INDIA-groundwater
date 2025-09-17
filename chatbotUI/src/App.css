@@ -28,9 +28,10 @@
 
 /* Dark mode styles */
 .dark-mode {
-  --app-bg: #1e1e1e;
+  --app-bg: #101012;
   --card-bg: #2d2d2d;
-  --card-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
+  --card-shadow: 0 10px 15px 3px rgba(255, 255, 255, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
+  --card-border:#d40ba8;
   --header-bg: #3c3c3c;
   --header-border: #555;
   --title-color: white;
@@ -165,6 +166,8 @@ body {
   padding: 0.75rem;
   border-radius: 0.5rem;
   max-width: 16rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
 }
 
 @media (min-width: 768px) {
@@ -185,6 +188,7 @@ body {
 .message-user {
   align-self: flex-end;
   background-color: var(--blue-600);
+  border-radius: 25px 3px 25px 25px;
   color: white;
 }
 
@@ -193,6 +197,7 @@ body {
   background-color: var(--message-bot-bg);
   color: var(--message-bot-color);
   transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+  border-radius: 3px 25px 25px 25px;
 }
 
 /* Input form - now floating at bottom center with expanded width */

@@ -1,0 +1,348 @@
+.india-map-container {
+  padding: 1.5rem;
+  background-color: var(--card-bg);
+  border-radius: 1rem;
+  margin: 1rem;
+  transition: all 0.3s ease-in-out;
+  /* ✅ shadow removed for flat design */
+}
+
+.map-header {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.map-header h2 {
+  color: var(--title-color);
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.025em;
+}
+
+.map-header p {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  margin: 0;
+  font-weight: 500;
+}
+
+.map-content {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  height: 500px; /* Fixed height for the grid container */
+}
+
+.map-wrapper {
+  border-radius: 0.75rem;
+  overflow: hidden;
+  background-color: var(--gray-50);
+  position: relative;
+  height: 100%; /* Take full height of grid cell */
+  width: 100%;
+}
+
+.dark-mode .map-wrapper {
+  background-color: #2d2d2d;
+}
+
+.map-wrapper .leaflet-container {
+  background-color: #f8f9fa !important;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  height: 100% !important; /* Ensure map takes full container height */
+  width: 100% !important;
+}
+
+.dark-mode .map-wrapper .leaflet-container {
+  background-color: #2d2d2d !important;
+}
+
+.map-wrapper .leaflet-tile {
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  image-rendering: pixelated;
+}
+
+.map-wrapper .leaflet-container {
+  touch-action: pan-x pan-y;
+  user-select: none;
+  /* Prevent scrollbars and ensure proper containment */
+  overflow: hidden !important;
+}
+
+.map-wrapper .leaflet-control-zoom a {
+  background-color: var(--card-bg);
+  color: var(--title-color);
+}
+
+.state-info-panel {
+  background-color: var(--card-bg);
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  transition: all 0.3s ease-in-out;
+  height: 100%; /* Take full height of grid cell */
+  overflow-y: auto; /* Only allow vertical scrolling when needed */
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+  display: flex;
+  flex-direction: column;
+}
+
+.state-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.state-info h3 {
+  color: var(--title-color);
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  text-align: center;
+  letter-spacing: -0.025em;
+  flex-shrink: 0; /* Prevent title from shrinking */
+}
+
+.state-details {
+  margin-bottom: 1rem;
+  flex-shrink: 0;
+}
+
+.state-details p {
+  color: var(--message-bot-color);
+  margin-bottom: 0.5rem;
+  font-size: 0.875rem;
+}
+
+.state-details strong {
+  color: var(--title-color);
+  font-weight: 600;
+}
+
+.clear-selection-btn {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: var(--button-primary);
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  font-size: 0.9rem;
+  flex-shrink: 0; /* Prevent button from shrinking */
+  margin-top: auto; /* Push button to bottom */
+}
+
+.clear-selection-btn:hover {
+  background-color: var(--button-primary-hover);
+  transform: translateY(-1px);
+}
+
+.no-selection {
+  text-align: center;
+  color: var(--empty-text-color);
+  font-style: italic;
+  font-size: 0.875rem;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Popups */
+.state-popup,
+.city-popup {
+  text-align: center;
+  min-width: 140px;
+  padding: 0.5rem;
+}
+
+.state-popup h3,
+.city-popup h3 {
+  margin: 0 0 0.5rem 0;
+  color: var(--title-color);
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+}
+
+.city-popup p {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.view-groundwater-btn {
+  background-color: var(--button-primary);
+  color: white;
+  border: none;
+  border-radius: 0.375rem;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  margin-top: 0.5rem;
+  width: 100%;
+}
+
+.view-groundwater-btn:hover {
+  background-color: var(--button-primary-hover);
+  transform: translateY(-1px);
+}
+
+/* Groundwater data */
+.groundwater-data {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  margin-bottom: 1rem;
+  /* Add some padding to prevent content from touching scrollbar */
+  padding-right: 0.25rem;
+}
+
+.data-section {
+  margin-bottom: 1rem;
+  padding: 0.75rem;
+  background-color: var(--input-bg);
+  border-radius: 0.375rem;
+}
+
+.data-section h4 {
+  color: var(--title-color);
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem 0;
+  text-align: center;
+  padding-bottom: 0.25rem;
+}
+
+.data-section p {
+  color: var(--message-bot-color);
+  margin: 0.25rem 0;
+  font-size: 0.75rem;
+  display: flex;
+  justify-content: space-between;
+  word-break: break-word; /* Prevent text overflow */
+}
+
+.data-section strong {
+  color: var(--title-color);
+  font-weight: 600;
+}
+
+/* Marker styling */
+.leaflet-marker-icon {
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+/* Leaflet map customizations */
+.leaflet-container {
+  font-family: inherit;
+}
+
+.leaflet-popup-content-wrapper {
+  background-color: var(--card-bg);
+  color: var(--title-color);
+  border-radius: 0.375rem;
+}
+
+.leaflet-popup-tip {
+  background-color: var(--card-bg);
+}
+
+.leaflet-control-zoom a:hover {
+  background-color: var(--input-bg);
+}
+
+/* Fix for leaflet zoom controls positioning */
+.leaflet-control-zoom {
+  border: none !important;
+}
+
+.leaflet-control-zoom a {
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Ensure no scrollbars appear on the main container */
+.leaflet-container * {
+  box-sizing: border-box;
+}
+
+/* Custom scrollbar styling */
+.state-info-panel::-webkit-scrollbar,
+.groundwater-data::-webkit-scrollbar {
+  width: 6px;
+}
+
+.state-info-panel::-webkit-scrollbar-track,
+.groundwater-data::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.state-info-panel::-webkit-scrollbar-thumb,
+.groundwater-data::-webkit-scrollbar-thumb {
+  background: var(--text-secondary);
+  border-radius: 3px;
+  opacity: 0.5;
+}
+
+.state-info-panel::-webkit-scrollbar-thumb:hover,
+.groundwater-data::-webkit-scrollbar-thumb:hover {
+  background: var(--title-color);
+  opacity: 0.7;
+}
+
+.dark-mode .state-info-panel::-webkit-scrollbar-thumb,
+.dark-mode .groundwater-data::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.dark-mode .state-info-panel::-webkit-scrollbar-thumb:hover,
+.dark-mode .groundwater-data::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+/* Firefox scrollbar styling */
+.state-info-panel,
+.groundwater-data {
+  scrollbar-width: thin;
+  scrollbar-color: var(--text-secondary) transparent;
+}
+
+.dark-mode .state-info-panel,
+.dark-mode .groundwater-data {
+  scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .map-content {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+    height: auto; /* Allow flexible height on mobile */
+  }
+
+  .map-wrapper {
+    height: 400px; /* Fixed height for mobile map */
+  }
+
+  .state-info-panel {
+    height: auto; /* Allow flexible height on mobile */
+    max-height: 400px; /* Limit maximum height */
+  }
+
+  .india-map-container {
+    margin: 0.25rem;
+    padding: 0.75rem;
+  }
+
+  .map-header h2 {
+    font-size: 1.25rem;
+  }
+}

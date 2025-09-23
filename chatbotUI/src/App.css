@@ -1,6 +1,5 @@
 /* Global styles */
 :root {
-  /* Modern Color Palette */
   --primary-50: #eff6ff;
   --primary-100: #dbeafe;
   --primary-500: #3b82f6;
@@ -24,7 +23,6 @@
   --red-500: #ef4444;
   --amber-500: #f59e0b;
 
-  /* Z-index */
   --z-menu: 1001;
   --z-overlay: 1000;
 
@@ -57,7 +55,7 @@
   --button-secondary-hover: var(--gray-200);
 }
 
-/* Dark mode styles */
+/* Dark mode */
 .dark-mode {
   --app-bg: var(--gray-900);
   --card-bg: var(--gray-800);
@@ -229,7 +227,6 @@ body {
   font-size: 0.875rem;
 }
 
-/* Message bubbles */
 .message-bubble {
   display: flex;
   align-items: flex-start;
@@ -298,7 +295,6 @@ body {
   border-radius: 3px 25px 25px 25px;
 }
 
-/* Input form - now floating at bottom center with expanded width */
 .chat-input-form {
   position: fixed;
   bottom: 2rem;
@@ -367,7 +363,6 @@ body {
   box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
 }
 
-/* Sidebar styles */
 .sidebar {
   position: fixed;
   top: 0;
@@ -509,7 +504,6 @@ body {
   transition: color 0.2s ease-in-out;
 }
 
-/* Removed blur effect from overlay */
 .menu-overlay {
   position: fixed;
   top: 0;

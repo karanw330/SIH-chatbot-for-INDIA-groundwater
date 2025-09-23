@@ -29,15 +29,12 @@ export default function App() {
         }}
       />
 
-      {/* Overlay */}
       <div
         className={`menu-overlay ${isMenuOpen ? "visible" : ""}`}
         onClick={() => setIsMenuOpen(false)}
       />
 
-      {/* Main Content */}
       <div className="chat-app-card">
-        {/* Header (hidden on home) */}
         {!isHome && (
           <div className="chat-header">
             <button
@@ -50,7 +47,6 @@ export default function App() {
 
             <h1 className="chat-title">INGRES BOT</h1>
 
-            {/* Right-side controls */}
             <div className="header-actions">
               <button
                 className="dark-mode-button"

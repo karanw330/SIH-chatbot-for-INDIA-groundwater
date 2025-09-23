@@ -4,7 +4,6 @@
   border-radius: 1rem;
   margin: 1rem;
   transition: all 0.3s ease-in-out;
-  /* ✅ shadow removed for flat design */
 }
 
 .map-header {
@@ -32,7 +31,7 @@
   grid-template-columns: 2fr 1fr;
   gap: 1rem;
   margin-bottom: 1rem;
-  height: 500px; /* Fixed height for the grid container */
+  height: 500px;
 }
 
 .map-wrapper {
@@ -40,7 +39,7 @@
   overflow: hidden;
   background-color: var(--gray-50);
   position: relative;
-  height: 100%; /* Take full height of grid cell */
+  height: 100%;
   width: 100%;
 }
 
@@ -52,7 +51,7 @@
   background-color: #f8f9fa !important;
   image-rendering: -webkit-optimize-contrast;
   image-rendering: crisp-edges;
-  height: 100% !important; /* Ensure map takes full container height */
+  height: 100% !important;
   width: 100% !important;
 }
 
@@ -69,7 +68,6 @@
 .map-wrapper .leaflet-container {
   touch-action: pan-x pan-y;
   user-select: none;
-  /* Prevent scrollbars and ensure proper containment */
   overflow: hidden !important;
 }
 
@@ -83,9 +81,9 @@
   border-radius: 0.75rem;
   padding: 1.5rem;
   transition: all 0.3s ease-in-out;
-  height: 100%; /* Take full height of grid cell */
-  overflow-y: auto; /* Only allow vertical scrolling when needed */
-  overflow-x: hidden; /* Prevent horizontal scrolling */
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
   display: flex;
   flex-direction: column;
 }
@@ -103,7 +101,7 @@
   margin-bottom: 1rem;
   text-align: center;
   letter-spacing: -0.025em;
-  flex-shrink: 0; /* Prevent title from shrinking */
+  flex-shrink: 0;
 }
 
 .state-details {
@@ -133,8 +131,8 @@
   cursor: pointer;
   transition: all 0.2s ease-in-out;
   font-size: 0.9rem;
-  flex-shrink: 0; /* Prevent button from shrinking */
-  margin-top: auto; /* Push button to bottom */
+  flex-shrink: 0;
+  margin-top: auto;
 }
 
 .clear-selection-btn:hover {
@@ -202,7 +200,6 @@
   overflow-y: auto;
   overflow-x: hidden;
   margin-bottom: 1rem;
-  /* Add some padding to prevent content from touching scrollbar */
   padding-right: 0.25rem;
 }
 
@@ -228,7 +225,7 @@
   font-size: 0.75rem;
   display: flex;
   justify-content: space-between;
-  word-break: break-word; /* Prevent text overflow */
+  word-break: break-word;
 }
 
 .data-section strong {
@@ -236,12 +233,10 @@
   font-weight: 600;
 }
 
-/* Marker styling */
 .leaflet-marker-icon {
   filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
 }
 
-/* Leaflet map customizations */
 .leaflet-container {
   font-family: inherit;
 }
@@ -260,7 +255,6 @@
   background-color: var(--input-bg);
 }
 
-/* Fix for leaflet zoom controls positioning */
 .leaflet-control-zoom {
   border: none !important;
 }
@@ -269,12 +263,10 @@
   border: 1px solid rgba(0, 0, 0, 0.1) !important;
 }
 
-/* Ensure no scrollbars appear on the main container */
 .leaflet-container * {
   box-sizing: border-box;
 }
 
-/* Custom scrollbar styling */
 .state-info-panel::-webkit-scrollbar,
 .groundwater-data::-webkit-scrollbar {
   width: 6px;
@@ -308,7 +300,6 @@
   background: rgba(255, 255, 255, 0.5);
 }
 
-/* Firefox scrollbar styling */
 .state-info-panel,
 .groundwater-data {
   scrollbar-width: thin;
@@ -320,21 +311,20 @@
   scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
 }
 
-/* Responsive */
 @media (max-width: 768px) {
   .map-content {
     grid-template-columns: 1fr;
     gap: 0.75rem;
-    height: auto; /* Allow flexible height on mobile */
+    height: auto;
   }
 
   .map-wrapper {
-    height: 400px; /* Fixed height for mobile map */
+    height: 400px;
   }
 
   .state-info-panel {
-    height: auto; /* Allow flexible height on mobile */
-    max-height: 400px; /* Limit maximum height */
+    height: auto;
+    max-height: 400px;
   }
 
   .india-map-container {

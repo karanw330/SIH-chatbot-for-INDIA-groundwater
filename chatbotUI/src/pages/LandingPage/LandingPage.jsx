@@ -3,7 +3,7 @@ import { Map, MessageSquare, Menu, X } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import "./LandingPage.css";
 
-const GroundwaterLanding = () => {
+const LandingPage = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [dropletAnimation, setDropletAnimation] = useState(false);
   const navigate = useNavigate();
@@ -35,7 +35,6 @@ const GroundwaterLanding = () => {
           >
             DASHBOARD
           </a>
-          {/* ✅ Updated Portal link */}
           <a
             href="https://ingres.iith.ac.in/home"
             target="_blank"
@@ -53,7 +52,6 @@ const GroundwaterLanding = () => {
         </button>
       </nav>
 
-      {/* Mobile Menu */}
       {isMenuOpen && (
         <div className="mobile-menu">
           <a href="#home" onClick={() => setIsMenuOpen(false)}>
@@ -69,7 +67,6 @@ const GroundwaterLanding = () => {
           >
             DASHBOARD
           </a>
-          {/* ✅ Updated Portal link */}
           <a
             href="https://ingres.iith.ac.in/home"
             target="_blank"
@@ -80,11 +77,8 @@ const GroundwaterLanding = () => {
           </a>
         </div>
       )}
-
-      {/* Main Content */}
       <main className="main-content">
         <div className="content-wrapper">
-          {/* Left Section */}
           <div className="text-section">
             <h1 className="hero-title">
               Groundwater insights.
@@ -106,7 +100,6 @@ const GroundwaterLanding = () => {
             </div>
           </div>
 
-          {/* Right Section - Visual */}
           <div className="visual-section">
             <div
               className={`water-droplet ${dropletAnimation ? "animate" : ""}`}
@@ -130,4 +123,4 @@ const GroundwaterLanding = () => {
   );
 };
 
-export default GroundwaterLanding;
+export default LandingPage;

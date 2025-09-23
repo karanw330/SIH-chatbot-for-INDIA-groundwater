@@ -48,7 +48,6 @@ function MapEventHandler({ onMapClick, onZoomChange }) {
     map.on("click", handleClick);
     map.on("zoomend", handleZoom);
 
-    // Initial zoom call
     handleZoom();
 
     return () => {

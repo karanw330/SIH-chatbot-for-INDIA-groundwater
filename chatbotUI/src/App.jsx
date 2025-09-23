@@ -48,7 +48,7 @@ export default function App() {
               <Menu size={24} />
             </button>
 
-            <h1 className="chat-title">INGRES APP</h1>
+            <h1 className="chat-title">INGRES BOT</h1>
 
             {/* Right-side controls */}
             <div className="header-actions">

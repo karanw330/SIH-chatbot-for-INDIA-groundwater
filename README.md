@@ -11,6 +11,11 @@ This chatbot combines multiple advanced technologies to provide a comprehensive 
 - **SQL Query Generation**: Automatically generates SQL queries from natural language to fetch structured data
 - **Web UI**: FastAPI backend with a responsive React frontend for seamless interaction
 
+## Architecture
+
+<img width="1032" height="669" alt="custom rag pipeline" src="https://github.com/user-attachments/assets/52ce84b1-b392-431f-95bf-0bb8f1966b1b" />
+
+
 ## Features
 
 ✨ **Intelligent Query Processing**
